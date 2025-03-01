@@ -40,7 +40,7 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", "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"
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/https://t.me/AppleMusicupdate")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/AppleMusicupdate")
 SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Apple_MusicSupport")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
