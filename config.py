@@ -33,15 +33,15 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/Yuuichiexe/Musicbot",
+    "https://github.com/Yuuichiexe/Musicbotx",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 GIT_TOKEN = getenv(
     "GIT_TOKEN", "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"
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/https://t.me/EonixCore")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Norabotsupport")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/https://t.me/AppleMusicupdate")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Apple_MusicSupport")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
