@@ -95,6 +95,18 @@ async def close_menu(_, CallbackQuery):
     except:
         return
 
+@app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
+async def close_menu(_, query: CallbackQuery):
+    try:
+        await query.answer()
+        await query.message.delete()
+        umm = await query.message.reply_text(
+            f"ᴄʟᴏsᴇᴅ ʙʏ | {query.from_user.mention}"
+        )
+        await asyncio.sleep(7)
+        await umm.delete()
+    except:
+        pass
 
 @app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
 async def close_menu(_, CallbackQuery):
