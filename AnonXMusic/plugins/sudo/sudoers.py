@@ -9,7 +9,6 @@ from AnonXMusic.utils.extraction import extract_user
 from AnonXMusic.utils.inline import close_markup
 from config import BANNED_USERS, OWNER_ID
 
-RDJ_ID = 5728468284
 
 SOME = filters.user()
 
@@ -57,13 +56,13 @@ async def userdel(client, message: Message, _):
 @language
 async def sudoers_list(client, message: Message, _):
     text = _["sudo_5"]
-    user = await app.get_users(RDJ_ID)
+    user = await app.get_users(OWNER_ID)
     user = user.first_name if not user.mention else user.mention
     text += f"↝ {user}\n"
     count = 0
     smex = 0
     for user_id in SUDOERS:
-        if user_id != RDJ_ID:
+        if user_id != OWNER_ID:
             try:
                 user = await app.get_users(user_id)
                 user = user.first_name if not user.mention else user.mention
