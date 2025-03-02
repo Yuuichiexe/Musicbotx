@@ -87,19 +87,17 @@ async def restartbot(client, message: Message, _):
 
 
 
+
 @app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
-async def close_menu(_, query: CallbackQuery):
+async def close_menu(client, query: CallbackQuery):  # Ensure only these 2 arguments
     try:
         await query.answer()
         await query.message.delete()
-        umm = await query.message.reply_text(
-            f"ᴄʟᴏsᴇᴅ ʙʏ | {query.from_user.mention}"
-        )
+        umm = await query.message.reply_text(f"ᴄʟᴏsᴇᴅ ʙʏ | {query.from_user.mention}")
         await asyncio.sleep(7)
         await umm.delete()
-    except:
-        pass
-
+    except Exception as e:
+        print(f"Error in close_menu: {e}")
 
 
 
