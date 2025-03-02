@@ -34,7 +34,7 @@ def private_panel(_):
             InlineKeyboardButton(text=_["F_2"], callback_data="ai_features"),
         ],
         [
-            InlineKeyboardButton(text=_["S_B_69"], url=f"https://t.me/AppleMusicupdate"),   
+            InlineKeyboardButton(text=_["SOURCE_66"], callback_data="source_helper"),   
         ],
     ]
     return buttons
