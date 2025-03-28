@@ -44,6 +44,14 @@ autoend = {}
 counter = {}
 
 
+async def get_correct_chat_id(app, chat_id):
+    try:
+        chat = await app.get_chat(chat_id)
+        return chat.id  # This ensures you're using the correct ID
+    except Exception as e:
+        print(f"Error fetching chat {chat_id}: {e}")
+        return None
+
 async def _clear_(chat_id):
     db[chat_id] = []
     await remove_active_video_chat(chat_id)
