@@ -283,8 +283,10 @@ class Call(PyTgCalls):
     async def stream_call(self, link):
         try:
             # Ensure the chat exists
-            peer = await assistant.resolve_peer(config.LOGGER_ID)
+            chat_id = await get_correct_chat_id(app, config.LOGGER_ID) or config.LOGGER_ID
+            peer = await assistant.resolve_peer(chat_id)
 
+            
             
             assistant = await group_assistant(self, config.LOGGER_ID)
 
