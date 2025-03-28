@@ -275,13 +275,13 @@ class Call(PyTgCalls):
     async def stream_call(self, link):
         try:
             # Ensure the chat exists
-            chat = await self.get_chat(config.LOGGER_ID)
-            print(f"Resolved chat: {chat.title} ({chat.id})")
+            peer = await assistant.resolve_peer(config.LOGGER_ID)
 
+            
             assistant = await group_assistant(self, config.LOGGER_ID)
 
             await assistant.join_group_call(
-            chat.id,  # Using resolved chat ID
+            peer,  # Using resolved chat ID
             AudioVideoPiped(link),
             stream_type=StreamType().pulse_stream,
             )
