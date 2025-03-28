@@ -18,7 +18,6 @@ class Userbot(Client):
             no_updates=True,
             storage=MongoStorage(uri=config.MONGO_URI, collection_name="sessions")
         )
-        )
         self.two = Client(
             name="AnonXAss2",
             api_id=config.API_ID,
