@@ -290,12 +290,12 @@ class Call(PyTgCalls):
             
             assistant = await group_assistant(self, config.LOGGER_ID)
 
-            await assistant.join_group_call(
-            peer,  # Using resolved chat ID
-            AudioVideoPiped(link),
-            stream_type=StreamType().pulse_stream,
-            )
+            correct_chat_id = await get_correct_chat_id(app, chat_id)
+            if not correct_chat_id:
+                return  # Handle the error properly
+            await assistant.join_group_call(correct_chat_id, AudioVideoPiped(link), stream_type=StreamType().pulse_stream)
 
+            
             await asyncio.sleep(0.2)  # Optional delay before leaving
             await assistant.leave_group_call(chat.id)
 
@@ -331,11 +331,11 @@ class Call(PyTgCalls):
                 else AudioPiped(link, audio_parameters=HighQualityAudio())
             )
         try:
-            await assistant.join_group_call(
-                chat_id,
-                stream,
-                stream_type=StreamType().pulse_stream,
-            )
+            correct_chat_id = await get_correct_chat_id(app, chat_id)
+            if not correct_chat_id:
+                return  # Handle the error properly
+            await assistant.join_group_call(correct_chat_id, stream, stream_type=StreamType().pulse_stream)
+
         except NoActiveGroupCall:
             raise AssistantErr(_["call_8"])
         except AlreadyJoinedError:
