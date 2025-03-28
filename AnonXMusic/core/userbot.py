@@ -8,8 +8,8 @@ assistantids = []
 
 
 class Userbot(Client):
-    print(f"Using session: {config.STRING1}")
     def __init__(self):
+        LOGGER(__name__).info(f"Using session: {config.STRING1}")
         self.one = Client(
             name="AnonXAss1",
             api_id=config.API_ID,
