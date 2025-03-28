@@ -1,5 +1,5 @@
 from pyrogram import Client
-
+from pyrogram.storage import MongoStorage
 import config
 
 from ..logging import LOGGER
