@@ -1,5 +1,4 @@
 from pyrogram import Client
-from pyrogram.storage import MongoStorage
 import config
 
 from ..logging import LOGGER
@@ -9,6 +8,7 @@ assistantids = []
 
 
 class Userbot(Client):
+    print(f"Using session: {config.STRING1}")
     def __init__(self):
         self.one = Client(
             name="AnonXAss1",
@@ -16,7 +16,6 @@ class Userbot(Client):
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
             no_updates=True,
-            storage=MongoStorage(uri=config.MONGO_URI, collection_name="sessions")
         )
         self.two = Client(
             name="AnonXAss2",
