@@ -16,6 +16,8 @@ class Userbot(Client):
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
             no_updates=True,
+            storage=MongoStorage(uri=config.MONGO_URI, collection_name="sessions")
+        )
         )
         self.two = Client(
             name="AnonXAss2",
