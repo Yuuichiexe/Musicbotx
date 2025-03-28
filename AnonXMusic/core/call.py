@@ -273,17 +273,24 @@ class Call(PyTgCalls):
         await assistant.change_stream(chat_id, stream)
 
     async def stream_call(self, link):
-        assistant = await group_assistant(self, config.LOGGER_ID)
         try:
-            await assistant.join_group_call(
-                config.LOGGER_ID,
-                AudioVideoPiped(link),
-                stream_type=StreamType().pulse_stream,
-            )
-            await asyncio.sleep(0.2)  # Optional: Adjust sleep time as needed
-            await assistant.leave_group_call(config.LOGGER_ID)
+           # Ensure the chat exists
+           chat = await self.get_chat(config.LOGGER_ID)
+           print(f"Resolved chat: {chat.title} ({chat.id})")
+
+           assistant = await group_assistant(self, config.LOGGER_ID)
+
+               await assistant.join_group_call(
+               chat.id,  # Using resolved chat ID
+               AudioVideoPiped(link),
+               stream_type=StreamType().pulse_stream,
+           )
+
+               await asyncio.sleep(0.2)  # Optional delay before leaving
+               await assistant.leave_group_call(chat.id)
+
         except Exception as e:
-            LOGGER(__name__).error(f"Error joining call: {e}")
+            LOGGER.error(f"Error in stream_call: {e}")
 
     async def join_call(
         self,
