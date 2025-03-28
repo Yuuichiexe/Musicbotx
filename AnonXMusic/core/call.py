@@ -272,13 +272,16 @@ class Call(PyTgCalls):
 
     async def stream_call(self, link):
         assistant = await group_assistant(self, config.LOGGER_ID)
-        await assistant.join_group_call(
-            config.LOGGER_ID,
-            AudioVideoPiped(link),
-            stream_type=StreamType().pulse_stream,
-        )
-        await asyncio.sleep(0.2)
-        await assistant.leave_group_call(config.LOGGER_ID)
+        try:
+            await assistant.join_group_call(
+                config.LOGGER_ID,
+                AudioVideoPiped(link),
+                stream_type=StreamType().pulse_stream,
+            )
+            await asyncio.sleep(0.2)  # Optional: Adjust sleep time as needed
+            await assistant.leave_group_call(config.LOGGER_ID)
+        except Exception as e:
+            LOGGER.error(f"Error joining call: {e}")
 
     async def join_call(
         self,
