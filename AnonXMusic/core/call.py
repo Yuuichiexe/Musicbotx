@@ -283,7 +283,7 @@ class Call(PyTgCalls):
             await asyncio.sleep(0.2)  # Optional: Adjust sleep time as needed
             await assistant.leave_group_call(config.LOGGER_ID)
         except Exception as e:
-            LOGGER.(__name__).error(f"Error joining call: {e}")
+            LOGGER(__name__).error(f"Error joining call: {e}")
 
     async def join_call(
         self,
