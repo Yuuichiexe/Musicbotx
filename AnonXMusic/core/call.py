@@ -308,6 +308,7 @@ class Call(PyTgCalls):
         video: Union[bool, str] = None,
         image: Union[bool, str] = None,
     ):
+        chat_id = await get_correct_chat_id(app, chat_id) or chat_id
         assistant = await group_assistant(self, chat_id)
         language = await get_lang(chat_id)
         _ = get_string(language)
