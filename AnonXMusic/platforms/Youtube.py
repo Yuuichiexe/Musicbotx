@@ -123,7 +123,7 @@ class YouTubeAPI:
         proc = await asyncio.create_subprocess_exec(
             "yt-dlp",
             "--cookies",
-            "cookies.txt",
+            "AnonXMusic/utils/cookies.txt",
             "-g",
             "-f",
             "best[height<=?720][width<=?1280]",
@@ -182,7 +182,7 @@ class YouTubeAPI:
             link = link.split("&")[0]
         ytdl_opts = {
             "quiet": True,
-            "cookies": "cookies.txt",  # Add this line
+            "cookies": "AnonXMusic/utils/cookies.txt", # Add this line
         }
         ydl = yt_dlp.YoutubeDL(ytdl_opts)
         with ydl:
@@ -255,7 +255,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookies": "cookies.txt",
+                "cookies": "AnonXMusic/utils/cookies.txt",
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
@@ -273,7 +273,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookies": "cookies.txt",
+                "cookies": "AnonXMusic/utils/cookies.txt",
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
             info = x.extract_info(link, False)
